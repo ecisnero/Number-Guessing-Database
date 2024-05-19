@@ -25,7 +25,11 @@ else
   test=$($PSQL "INSERT INTO user_stats(username) VALUES('$username');")
   echo "Welcome, $username! It looks like this is your first time here."
 fi
+
+guess() {
 # Prompt user for guess in this current game:
+echo "Guess the secret number between 1 and 1000:"
+read guess
 
 # Check if guess is numeric
 # If number is not numeric, ask for another guess
@@ -37,3 +41,6 @@ fi
 
   # Otherwise number is a match,
   # Congratulate player and finish running
+}
+
+guess
