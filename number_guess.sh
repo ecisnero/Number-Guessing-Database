@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Generate random number between 1 and 1000
+random_number=$(( $RANDOM % 1000 + 1 ))
 
 # Prompt user for username:
 
