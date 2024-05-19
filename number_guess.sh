@@ -4,6 +4,8 @@
 random_number=$(( $RANDOM % 1000 + 1 ))
 
 # Prompt user for username:
+echo "Enter your username:"
+read username
 
 # Search user in database
 
