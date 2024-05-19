@@ -27,20 +27,37 @@ else
 fi
 
 guess() {
-# Prompt user for guess in this current game:
-echo "Guess the secret number between 1 and 1000:"
-read guess
+  guess_count=$(( $1 + 1 ))
 
-# Check if guess is numeric
-# If number is not numeric, ask for another guess
+  # Prompt user for guess in this current game:
+  echo "Guess the secret number between 1 and 1000:"
+  read guess
 
-# Otherwise continue with numeric comparison
-  # If number is less than guess, ask for another guess
+  # Check if guess is numeric
+  # If number is not numeric, ask for another guess
+  if [[ ! $guess =~ ^[0-9]+$ ]]
+  then
+    echo "That is not an integer, guess again:"
+    guess $guess_count
 
-  # Else if number is greater than guess, ask for another guess
-
-  # Otherwise number is a match,
-  # Congratulate player and finish running
+  # Otherwise continue with numeric comparison
+  else
+    # If number is less than guess, ask for another guess
+    if [[ $random_number -lt $guess ]]
+    then
+      echo "It's lower than that, guess again:"
+      guess $guess_count
+    # Else if number is greater than guess, ask for another guess
+    elif [[ $random_number -gt $guess ]]
+    then
+      echo "It's higher than that, guess again:"
+      guess $guess_count
+    # Otherwise number is a match,
+    else
+    # Congratulate player and finish running
+      echo You guessed it in $guess_count tries. The secret number was $random_number. Nice job!
+    fi
+  fi
 }
 
-guess
+guess 0
