@@ -30,7 +30,10 @@ guess() {
   guess_count=$(( $1 + 1 ))
 
   # Prompt user for guess in this current game:
-  echo "Guess the secret number between 1 and 1000:"
+  if [[ $guess_count -eq 1 ]]
+  then
+    echo "Guess the secret number between 1 and 1000:"
+  fi
   read guess
 
   # Check if guess is numeric
